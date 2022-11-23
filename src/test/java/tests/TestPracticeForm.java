@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.selector.ByText;
 import org.junit.jupiter.api.BeforeAll;
@@ -50,6 +52,6 @@ public class TestPracticeForm {
         $("#submit").click();
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text("Denis Antonov"), text("denis@gmail.com"), text("21 January,1989"), text("Male"), text("Computer Science"), text("My adress"));
+        $(".table-responsive").shouldHave(text("Denis Antonov"), text("denis@gmail.com"), text("21 January,1989"), text("Male"), text("Computer Science"), text("My adress"), text("9505555555"), text("Reading"), text("cat_pic.webp"));
     }
 }
