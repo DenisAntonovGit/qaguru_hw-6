@@ -1,29 +1,25 @@
 package tests;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+
+import java.util.Locale;
+
 public class TestPracticeWithPageObjectsForm extends TestBase{
 
     @Test
+
     void testPracticeForm() {
-        String userName = "Denis";
-        String userLastName = "Antonov";
-        String userEmail = "denis@gmail.com";
-        String userGender = "Male";
-        String userPhone = "9505555555";
-        String dayOfBirth = "21";
-        String monthOfBirth = "January";
-        String yearOfBirth = "1989";
-        String subject = "Computer Science";
-        String hobbie = "Reading";
-        String picFilePath = "src/test/resources/cat_pic.webp";
-        String picName = "cat_pic.webp";
-        String adress = "My adress";
-        String state = "Haryana";
-        String city = "Karnal";
+        Faker faker = new Faker(new Locale("en"));
+        String userName = faker.name().firstName();
+        String lastName = faker.name().lastName();
+        String userEmail = faker.internet().emailAddress();
+        String userPhone = faker.phoneNumber().subscriberNumber(10);
+        
 
         registrationPage.openPage()
             .setFirstName(userName)
-            .setLastName(userLastName)
+            .setLastName(lastName)
             .setEmail(userEmail)
             .setGender()
             .setPhone(userPhone)
@@ -37,7 +33,7 @@ public class TestPracticeWithPageObjectsForm extends TestBase{
             .submitButton();
 
         registrationPage.verifyResultsModalAppears()
-                .verifyResult("Student Name", userName + " " + userLastName)
+                .verifyResult("Student Name", userName + " " + lastName)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", userGender)
                 .verifyResult("Mobile", userPhone)
